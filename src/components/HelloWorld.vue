@@ -10,20 +10,32 @@
   <Button @click="state.count++" label="Count"></Button>
   <h6>{{ state.count }}</h6>
 
-  <p>
-    Edit
-    <code>components/HelloWorld.vue</code> to test hot module replacement.
+  <h1>Overlay position</h1>
+
+  <Dropdown v-model="select" :options="cities" optionLabel="name" optionValue="code" placeholder="Select a City" />
+
+  <p style="color: red">
+    Dropdown position not align. When window height less than 800px
   </p>
 </template>
 
 <script setup>
-import { defineProps, reactive } from 'vue'
+import { defineProps, reactive, ref } from 'vue'
 
 defineProps({
   msg: String
 })
 
 const state = reactive({ count: 0 })
+
+const select = ref();
+const cities = ref([
+    {name: 'New York', code: 'NY'},
+    {name: 'Rome', code: 'RM'},
+    {name: 'London', code: 'LDN'},
+    {name: 'Istanbul', code: 'IST'},
+    {name: 'Paris', code: 'PRS'}
+]);
 </script>
 
 <style scoped>
